@@ -1,0 +1,59 @@
+@import compass/reset
+@import compass/css3
+@import compass/utilities/general
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700)
+
+=pink_button
+  background-color: #e34583
+  @include filter-gradient(#e34583, #bf225e, vertical)
+  $experimental-support-for-svg: true
+  @include background-image(linear-gradient(top,  hsla(336,74%,58%,1) 0%,hsla(337,70%,44%,1) 100%))
+  border: #A01347 1px solid
+  padding: 2px 12px
+  +border-radius(4px)
+  +box-shadow(rgba(255, 255, 255, .4) 0 0 2px inset, rgba(0, 0, 0, .4) 0 2px 2px)
+  color: #fff
+  text-decoration: none
+  font: 
+    size:  14px
+    weight: bolds
+  &:hover
+    opacity: .7
+
+
+body.tasks_edit
+  .task_edit
+    width: 600px
+    margin: 0 auto
+    form
+      padding: 40px 0 0 0
+    .field
+      ul
+        li
+          display: block
+          float: left
+          padding: 0 0 30px 0
+          &.name
+            clear: both
+            width: 100px
+      input
+        font: 
+          size: 18px
+        width: 400px
+        +border-radius(4px)
+    .actions
+      clear: both
+      ul
+        li.submit
+          text-align: center
+          input
+            margin: 0 auto
+            +pink_button
+footer
+  padding: 40px 0 0 0 
+  line-height: 1.6
+  text-align: center
+  clear: both
+  font:
+    sizer: 13px
+    

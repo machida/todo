@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title= APP_NAME
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body(class="#{controller_name} #{controller_name}_#{action_name}")
+    %header
+      .wrap
+        %ul
+          - if current_user
+            %li.user
+              %span.icon= link_to_unless( current_user.screen_name.blank?, image_tag( current_user.image, size: "20x20" ), "https://twitter.com/#!/#{current_user.screen_name}", target: "_blank" )
+              %span.name= current_user.name
+            %li.logout #{link_to "Logout", logout_path}
+          - else
+            %li.login= link_to "Login", "/auth/#{DEFAULT_PROVIDER}"
+    = simple_format( flash[:notice], style: "color: green;" ) unless flash[:notice].blank?
+    = simple_format( flash[:alert], style: "color: red;" ) unless flash[:alert].blank?
+    #body
+      .wrap
+        = yield
+    %footer
+      Developed by
+      = succeed "," do
+        %a{:href => "https://twitter.com/#!/PROGRAMMER_ID/", :target => "_blank"} PROGRAMMER_NAME
+      Designed by
+      %a{:href => "https://twitter.com/#!/DESIGNER_ID/", :target => "_blank"} DESIGNER_NAME
+      %br/
+      Licence by
+      %a{:href => "http://creativecommons.org/licenses/by-nc-sa/2.1/jp/", :target => "_blank"} CC BY-NC-SA 2.1
